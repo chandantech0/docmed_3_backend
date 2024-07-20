@@ -52,7 +52,7 @@ router.post('/api/chemist/getProfile', checkUth, async (req, res, next) => {
     }
 });
 
-router.post('/api/chemist/updateProfile', multer({
+router.post('/api/chemist/updateProfile', multer({ 
     storage: storage
 }).single("image"), checkUth, async (req, res, next) => {
     const {
