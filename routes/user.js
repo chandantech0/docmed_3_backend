@@ -436,7 +436,8 @@ route.post('/api/user/login', async (req, res) => {
 route.get('/api/user/isLoginExist', (req, res) => {
     try {
         const token = req.headers.authorization.split(" ")[1];
-        const secKey = GetSecureKey();
+        // const secKey = GetSecureKey();
+        const secKey = 'this_is_secure_data_for_docmed_hari-om-namah-shivay';
         jwt.verify(token, secKey, (err, user) => {
             if (err) {
                 res.status(200).json({
