@@ -52,7 +52,8 @@ app.set("port", port);
 const server = http.createServer(app);
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:4200",
+    // origin: "http://localhost:4200",
+    origin: 'https://docmed3-0.vercel.app',
     methods: ["GET", "POST"]
   }
 });
