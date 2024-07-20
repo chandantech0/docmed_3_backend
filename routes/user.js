@@ -403,8 +403,9 @@ route.post('/api/user/login', async (req, res) => {
             });
         }
         // Generate or retrieve the secret key
-        const robustSecretKey = generateRandomSecret();
-        setSecureKey(robustSecretKey);
+        // const robustSecretKey = generateRandomSecret();
+        // setSecureKey(robustSecretKey);
+        const robustSecretKey = 'this_is_secure_data_for_docmed_hari-om-namah-shivay';
        // Use the generated secret to sign the JWT
             const token = jwt.sign({
             email: user.email,
