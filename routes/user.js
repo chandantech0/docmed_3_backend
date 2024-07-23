@@ -74,7 +74,7 @@ route.post('/api/user/signup-otp-email', async (req, res, next) => {
     const mailOptions = {
         from: 'cgrockboy@gmail.com',
         to: email,
-        subject: 'DocMed - Sign Up OTP',
+        subject: 'DoccMed - Sign Up OTP',
         text: `Hello, this is your OTP ${otp} !`,
     };
 
@@ -121,7 +121,7 @@ route.post('/api/chemist/signup-otp-email', async (req, res, next) => {
     const mailOptions = {
         from: 'cgrockboy@gmail.com',
         to: email,
-        subject: 'DocMed - Sign Up OTP',
+        subject: 'DoccMed - Sign Up OTP',
         text: `Hello, this is your OTP ${otp} !`,
     };
 
@@ -186,6 +186,8 @@ route.post('/api/chemist/signup', (req, res, next) => {
             pinCode: req.body.pinCode,
             city: req.body.city,
             area: req.body.area,
+            lat: req.body.lat,
+            lng: req.body.lng,
             isVerified: false,
             isActive: false,
             isBlock: false,
@@ -268,11 +270,12 @@ route.post('/api/chemist/signUpOtpSubmit', async (req, res, next) => {
                 address: chemistUser.address,
                 city: chemistUser.city,
                 area: chemistUser.area,
+                lat: chemistUser.lat,
+                lng: chemistUser.lng,
                 isActive: false,
                 isBlock: false
             })
             const newMedicalList = await MedicalListData.save();
-            console.log(newMedicalList);
             const MedicinesListData = new MedicinesList({
                 chemist_id: chemistUser._id
             })
@@ -281,7 +284,7 @@ route.post('/api/chemist/signUpOtpSubmit', async (req, res, next) => {
             res.status(200).json({
                 status: 'Success',
                 message: 'chemist User created Successful.',
-                data: chemistUser
+                // data: chemistUser
             });
         } else {
             res.status(200).json({

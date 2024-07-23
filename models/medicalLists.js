@@ -8,6 +8,8 @@ const medicalListSchema = mongoose.Schema({
     image: String,
     city: String,
     area: String,
+    lat: String,
+    lng: String,
     isActive: Boolean,
     isBlock: Boolean,
 });

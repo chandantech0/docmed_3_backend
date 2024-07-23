@@ -13,6 +13,8 @@ const userSchema = mongoose.Schema({
     pinCode: {type: Number, require: true},
     city: {type: String, require: true},
     area: {type: String, require: true},
+    lat: {type: String, require: true},
+    lng: {type: String, require: true},
     userType: {type: String, require: true},
     userTypeSub: {type: String},
     otp: {type: String},
