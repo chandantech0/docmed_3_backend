@@ -31,21 +31,20 @@ router.post('/api/user/getMedicalLists', async (req, res, next) => {
               medicalLists: nearbyMedicalList,
             });
           } else {
-            condition = { city, isActive: true, isBlock: false };
-            const medicalListEntryByCity = await medicalList.find(condition);
-            if (medicalListEntry.length > 0) {
-              res.status(200).json({
-                status: 'success',
-                message: 'Data fetch success',
-                medicalLists: medicalListEntryByCity,
-              });
-            } else {
-              res.status(200).json({
-                status: 'success',
-                message: 'Data fetch success',
-                medicalLists: [],
-              });
-            }
+            res.status(200).json({
+              status: 'success',
+              message: 'Data fetch success',
+              medicalLists: [],
+            });
+            // condition = { city, isActive: true, isBlock: false };
+            // const medicalListEntryByCity = await medicalList.find(condition);
+            // if (medicalListEntry.length > 0) {
+            //   res.status(200).json({
+            //     status: 'success',
+            //     message: 'Data fetch success',
+            //     medicalLists: medicalListEntryByCity,
+            //   });
+            // }
           }
         }
       } catch (error) {
