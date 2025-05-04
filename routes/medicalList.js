@@ -39,6 +39,12 @@ router.post('/api/user/getMedicalLists', async (req, res, next) => {
                 message: 'Data fetch success',
                 medicalLists: medicalListEntryByCity,
               });
+            } else {
+              res.status(200).json({
+                status: 'success',
+                message: 'Data fetch success',
+                medicalLists: [],
+              });
             }
           }
         }
