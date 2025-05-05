@@ -18,8 +18,9 @@ router.post('/api/user/getMedicalLists', async (req, res, next) => {
               medicalLists: medicalListEntry,
             });
         } else {
+          condition = { isActive: true, isBlock: false };
           const maxDistance = 7; // 7 km
-          const medicalListEntryByCity = await medicalList.find();
+          const medicalListEntryByCity = await medicalList.find(condition);
           const nearbyMedicalList = medicalListEntryByCity.filter(entry => {
             const distance = getDistanceFromLatLonInKm(coordinate.lat, coordinate.lng, entry.lat, entry.lng);
             return (distance <= maxDistance && entry.isActive && !entry.isBlock)
@@ -36,15 +37,6 @@ router.post('/api/user/getMedicalLists', async (req, res, next) => {
               message: 'Data fetch success',
               medicalLists: [],
             });
-            // condition = { city, isActive: true, isBlock: false };
-            // const medicalListEntryByCity = await medicalList.find(condition);
-            // if (medicalListEntry.length > 0) {
-            //   res.status(200).json({
-            //     status: 'success',
-            //     message: 'Data fetch success',
-            //     medicalLists: medicalListEntryByCity,
-            //   });
-            // }
           }
         }
       } catch (error) {
